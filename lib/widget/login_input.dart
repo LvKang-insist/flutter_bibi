@@ -36,7 +36,6 @@ class _LoginInputState extends State<LoginInput> {
     super.initState();
     //光标监听
     _focusNode.addListener(() {
-      print(_focusNode.hasFocus);
       if (widget.focusChanged != null) widget.focusChanged(_focusNode.hasFocus);
     });
   }

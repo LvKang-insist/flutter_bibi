@@ -6,6 +6,7 @@ import 'package:flutter_bibi/http/a_entity.dart';
 import 'package:flutter_bibi/http/core/hi_net.dart';
 import 'package:flutter_bibi/http/dao/login_dao.dart';
 import 'package:flutter_bibi/http/request/test_request.dart';
+import 'package:flutter_bibi/page/login_page.dart';
 import 'package:flutter_bibi/page/registration_page.dart';
 import 'package:flutter_bibi/widget/color.dart';
 
