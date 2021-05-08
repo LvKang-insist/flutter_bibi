@@ -42,18 +42,18 @@ class HiNet {
     var result = response.data;
     printLog(result);
 
-    var status = response.statusCode;
-    switch (status) {
-      case 200:
-        break;
-      case 401:
-        throw NeedLogin();
-        break;
-      case 403:
-        throw NeedAuth("授权错误");
-      default:
-        throw HiNetError(status, result.toString(), data: result);
-    }
+    // var status = response.statusCode;
+    // switch (status) {
+    //   case 200:
+    //     break;
+    //   case 401:
+    //     throw NeedLogin();
+    //     break;
+    //   case 403:
+    //     throw NeedAuth("授权错误");
+    //   default:
+    //     throw HiNetError(status, result.toString(), data: result);
+    // }
     return result;
   }
 

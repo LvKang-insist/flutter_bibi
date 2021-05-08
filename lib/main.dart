@@ -4,7 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bibi/db/hi_catch.dart';
 import 'package:flutter_bibi/http/a_entity.dart';
 import 'package:flutter_bibi/http/core/hi_net.dart';
+import 'package:flutter_bibi/http/dao/login_dao.dart';
 import 'package:flutter_bibi/http/request/test_request.dart';
+import 'package:flutter_bibi/page/registration_page.dart';
+import 'package:flutter_bibi/widget/color.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,9 +20,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: white,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: RegistrationPage(),
     );
   }
 }
@@ -37,11 +40,11 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   void _incrementCounter() async {
-    // TestRequest request = TestRequest();
-    // request.add("k", "v").add("requestPrams", "bbbbbbbbb");
-    // var result = await HiNet.getInstance().fire(request);
+    // var result = await LoginDao.registration("345", "345", "123456", "123456");
     // print(result);
-    test();
+
+    var result = await LoginDao.login("345", "345");
+    print(result);
   }
 
   @override
@@ -70,10 +73,5 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
-  }
-
-  test() {
-    HiCache.getInstance().setString("key", "234");
-    print(HiCache.getInstance().get("key"));
   }
 }

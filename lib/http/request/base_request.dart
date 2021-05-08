@@ -44,7 +44,11 @@ abstract class BaseRequest {
   bool needLogin();
 
   Map<String, String> params = Map();
-  Map<String, dynamic> header = Map();
+  Map<String, dynamic> header = {
+    'course-flag': 'fa',
+    //访问令牌，在课程公告获取
+    "auth-token": "MjAyMC0wNi0yMyAwMzoyNTowMQ==fa",
+  };
 
   ///添加参数
   BaseRequest add(String k, Object v) {

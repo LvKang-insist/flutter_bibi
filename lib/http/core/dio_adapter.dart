@@ -13,16 +13,22 @@ class DioAdapter extends HiNetAdapter {
   Future<HiNetResponse> send(BaseRequest request) async {
     var response;
     var option = Options(headers: request.header);
+    var dio = Dio();
+    dio.interceptors.add(LogInterceptor(
+        responseBody: true,
+        requestBody: true,
+        responseHeader: false,
+        requestHeader: true));
     var error;
     try {
       if (request.httpMethod() == HttpMethod.GET) {
-        response = await Dio().get(request.url(), options: option);
+        response = dio.get(request.url(), options: option);
       } else if (request.httpMethod() == HttpMethod.POST) {
-        response = await Dio()
-            .post(request.url(), data: request.params, options: option);
+        response =
+            dio.post(request.url(), data: request.params, options: option);
       } else if (request.httpMethod() == HttpMethod.DELETE) {
-        response = await Dio()
-            .delete(request.url(), data: request.params, options: option);
+        response =
+            dio.delete(request.url(), data: request.params, options: option);
       }
     } on DioError catch (e) {
       error = e;
